@@ -1,0 +1,75 @@
+<div class="row register justify-content-center">
+
+  <div class="row">
+    <div class="container text-end">
+      <button class="btn btn-light mt-4 me-4" (click)="closeDialog()" >x</button>
+    </div>
+  </div>
+
+  <div class="m-5">
+    <div class="ps-5">
+      <h5 class="card-title">Create your Match Day account</h5>
+      <p class="pt-3">Secondary text</p>
+
+      <form [formGroup]="registerForm" class="pe-5 mt-0 pt-0">
+
+        <!------- name ------->
+
+        <div class="mb-4 mt-0">
+          <input type="name" class="form-control" placeholder="Enter your name" formControlName="name" required
+          [ngClass]="{'
+          is-invalid': registerForm.get('name')?.invalid && registerForm.get('name')?.touched,
+          'is-valid': registerForm.get('name')?.valid && registerForm.get('name')?.touched,
+          }">
+         @if (registerForm.get('name')?.invalid && registerForm.get('name')?.touched){ <span class="text3 text-danger">*Name is required</span> }
+        </div>
+
+
+        <!------- email ------->
+
+        <div class="pb-4">
+          <input type="email" class="form-control" placeholder="Enter your email" formControlName="email" required
+          [ngClass]="{'
+          is-invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched,
+          'is-valid': registerForm.get('email')?.valid && registerForm.get('email')?.touched,
+          }">
+          @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched){ <span class="text3 text-danger">*Email is required</span> }
+          @else if (repeatedEmail){ <span class="text3 text-danger">*Email already registered</span> }
+        </div>
+
+
+
+        <!----- password ------->
+
+        <div class="mb-4">
+          <input type="password" class="form-control" placeholder="Create password" formControlName="password" required
+          [ngClass]="{'
+          is-invalid': registerForm.get('password')?.invalid && registerForm.get('password')?.touched,
+          'is-valid': registerForm.get('password')?.valid && registerForm.get('password')?.touched,
+          }">
+          @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+            @if(registerForm.get('password')?.hasError('required')) {
+              <span class="text3 text-danger">*Password is required</span>
+            }
+            @else if(registerForm.get('password')?.hasError('invalidPassword')) {
+            <p class="text3 text-danger pt-2">*The password must have at least 8 characters, at least one letter, and at least one number.</p>
+            }
+          }
+
+        </div>
+
+      <!-- <div>
+        <p class="text3 text-secondary">*By creating an account, you agree to our Terms of Use, and acknowledge that you have read our Privacy Policy, Cookies Policy and UK & EU Privacy Rights.</p>
+      </div> -->
+
+      <!------- button submit ------->
+
+      <div class="row justify-content-center pt-3 ps-3 pe-3">
+        <button type="submit" class="btn btn-primary" (click)="register()">Create an account</button>
+        <button class="btn btn-secondary mt-2" (click)="navigateToLogin()">Log In</button>
+
+      </div>
+
+    </form>
+  </div>
+</div>
