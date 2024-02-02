@@ -17,6 +17,7 @@ export class MainPageComponent {
   public leagues: League[] = [];
 
   constructor( public leagueService: LeagueService ){
+
     this.leagueService.getListLeagues().subscribe((response) => {this.leagues = response})
 
   }

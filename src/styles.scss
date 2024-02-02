@@ -11,3 +11,18 @@ $gradient-right: linear-gradient(90deg, #faa6ffff, #7353baff, #2f195fff, #0f1020
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+.btn{
+  border-radius: 50pt;
+  font-size: 10pt;
+}
+
+.form-control{
+  border-radius: 50pt;
+  font-size: 10pt;
+}
+
+.card{
+  border-radius: 25pt;
+
+}
