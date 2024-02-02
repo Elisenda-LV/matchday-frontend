@@ -7,7 +7,12 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/main-page/main-page.component').then(c => c.MainPageComponent),
 
   },
+  {
+    path: 'leagues',
+    title: 'Leagues',
+    loadComponent: () => import('./components/leagues/leagues.component').then(c => c.LeaguesComponent),
 
+  },
 
 
 
