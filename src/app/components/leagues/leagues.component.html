@@ -4,6 +4,7 @@
           <h1 class="fw-bolder">Pay as you grow</h1>
           <p class="lead fw-normal text-muted mb-0">With our no hassle pricing plans</p>
       </div>
+      <div><button class="btn btn-primary" (click)="addLeagueModal()">Add League</button></div>
       <div class="row gx-5 justify-content-center">
 
           <!-- Leagues cards-->
@@ -23,8 +24,8 @@
                           <li class="mb-2">{{ league.gender }}</li>
                           <li class="mb-2 text-muted">{{ league.description }}</li>
                       </ul>
-                      <div class="d-grid"><a class="btn btn-secondary mb-3" href="#!">Show League</a></div>
-                      <div class="d-grid"><a class="btn btn-primary" href="#!">League Manager</a></div>
+                      <div class="d-grid"><a class="btn btn-secondary mb-3">Show League</a></div>
+                      <div class="d-grid"><a class="btn btn-primary">League Manager</a></div>
                   </div>
               </div>
           </div>

@@ -4,6 +4,7 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { LeagueService } from '../../services/leagues.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AddLeagueComponent } from './add-league/add-league.component';
 
 
 @Component({
@@ -24,6 +25,15 @@ export class LeaguesComponent {
     public leagueService: LeagueService, public config: NgbModalConfig){
 
     this.leagueService.getListLeagues().subscribe((response) => {this.leagues = response})
+
+  }
+
+
+  //TODO: add league button --> open modal with form:
+
+  addLeagueModal(){
+    this.modalService.open(AddLeagueComponent)
+
   }
 
 
