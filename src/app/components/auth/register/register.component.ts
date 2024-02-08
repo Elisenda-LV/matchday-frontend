@@ -1,9 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { UsersService } from '../../../services/users.service';
 import { NgbConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CustomValidators } from '../../../validators/custom.validators';
 import { CommonModule } from '@angular/common';
+
+import { UsersService } from '../../../services/users.service';
+import { CustomValidators } from '../../../validators/custom.validators';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-register',
@@ -27,10 +29,50 @@ export class RegisterComponent {
 
   constructor( public userService: UsersService, public config: NgbConfig ){}
 
-  register(){}
+  public register(){
+    if(this.registerForm.valid){
+      let formData = this.registerForm.value;
 
-  closeDialog(){}
+      //check emaiL:
+      this.userService.isEmailRegistered(formData.email!).subscribe(
+        isRegistered => {
+          if(!isRegistered){
+            this.repeatedEmail = false;
+            this.userService.users(JSON.stringify(formData))
+              .subscribe({
+                next: (res) => {
+                  console.log(res);
+                  this.closeDialog();
+                  const loginData = { email: formData.email!, password: formData.password! };
+                  this.userService.users(JSON.stringify(loginData)).subscribe(
+                    {
+                      next: (res) => {
+                        this.userService.updateUser(res.accessToken!);
+                      },
+                      error: e => console.log(e)
+                    });
+                  },
+                });
 
-  navigateToLogin(){}
+          }else{
+            this.repeatedEmail = true;
+          }
+        }
+      );
+    }
+
+
+
+
+  }
+
+  public closeDialog(): void {
+    this.modalService.dismissAll()
+  }
+
+  public navigateToLogin(): void {
+    this.closeDialog();
+    this.modalService.open(LoginComponent)
+  }
 
 }

@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { UsersService } from '../../../services/users.service';
+import { RegisterComponent } from '../register/register.component';
 
 
 @Component({
@@ -25,13 +27,37 @@ export class LoginComponent {
 
   });
 
-  constructor( public userService: UsersService, public config: NgbModalConfig ){}
+  constructor( public userService: UsersService, private router: Router, public config: NgbModalConfig ){}
 
-  login(){}
+  login(){
+    if (this.loginForm.valid) {
+      let formData = this.loginForm.value;
+      this.userService.users(JSON.stringify(formData))
+      .subscribe(
+        {
+          next: (res) => {
+            this.userService.updateUser(res.accessToken!);
+            this.incorrectLogin = false;
+            this.closeDialog();
+            this.navigateToRegistration();
+          },
+          error: (e) => {
+            console.log(e);
+            this.incorrectLogin = true;
+          }
+        }
+      );
+    }
+  }
 
-  navigateToRegistration(){}
+  navigateToRegistration(): void {
+    this.closeDialog();
+    this.modalService.open(RegisterComponent)
+  }
 
-
+  closeDialog(): void {
+    this.modalService.dismissAll()
+  }
 
 
 }

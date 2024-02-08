@@ -5,6 +5,7 @@ import { LeagueService } from '../../services/leagues.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AddLeagueComponent } from './add-league/add-league.component';
+import { LeagueManagerComponent } from './league-manager/league-manager.component';
 
 
 @Component({
@@ -35,6 +36,8 @@ export class LeaguesComponent {
     this.modalService.open(AddLeagueComponent)
 
   }
+
+
 
 
 

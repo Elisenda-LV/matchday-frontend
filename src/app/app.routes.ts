@@ -13,6 +13,12 @@ export const routes: Routes = [
     loadComponent: () => import('./components/leagues/leagues.component').then(c => c.LeaguesComponent),
 
   },
+  {
+    path: 'manager',
+    title: 'League Manager',
+    loadComponent: () => import('./components/leagues/league-manager/league-manager.component').then(c => c.LeagueManagerComponent),
+
+  },
 
 
 
