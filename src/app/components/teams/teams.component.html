@@ -1,9 +1,9 @@
 <section class="bg-light py-5">
   <div class="container px-5 my-3">
       <div class="text-end mb-3">
-        <button class="btn btn-primary" (click)="addLeagueModal()">Add League</button>
+        <button class="btn btn-primary">Add Team</button>
       </div>
-      <h1 class="">Show all leagues</h1>
+      <h1 class="">Show all Teams</h1>
       <div class="container m-3">
 
         <ul class="nav justify-content-end mb-5">
@@ -35,23 +35,23 @@
 
           <!-- Leagues cards-->
 
-          @for( league of leagues; track $index ){
+          @for( team of teams; track $index ){
 
           <div class="col-lg-6 col-xl-4">
               <div class="card mb-5 mb-xl-0">
                   <div class="card-body p-5">
-                      <div class="small text-uppercase fw-bold text-muted">{{ league.sport }}</div>
+                      <div class="small text-uppercase fw-bold text-muted">{{ team.sport_id }}</div>
                       <div class="mb-3">
-                          <span class="display-6">{{ league.league_name }}</span>
+                          <span class="display-6">{{ team.team_name}}</span>
                       </div>
                       <ul class="list-unstyled mb-4">
-                          <li class="mb-2"><strong>{{ league.location }}</strong></li>
-                          <li class="mb-2">{{ league.category }}</li>
-                          <li class="mb-2">{{ league.gender }}</li>
-                          <li class="mb-2 text-muted">{{ league.description }}</li>
+                          <li class="mb-2"><strong>{{ team.location }}</strong></li>
+                          <li class="mb-2">{{ team.category }}</li>
+                          <li class="mb-2">{{ team.gender }}</li>
+                          <li class="mb-2 text-muted">{{ team.description }}</li>
                       </ul>
 
-                      <div class="d-grid"><a class="btn btn-primary" [routerLink]="['/manager']" routerLinkActive="">League Manager</a></div>
+                      <div class="d-grid"><a class="btn btn-primary">Team Manager</a></div>
                   </div>
               </div>
           </div>
@@ -59,3 +59,4 @@
         </div>
       </div>
 </section>
+
