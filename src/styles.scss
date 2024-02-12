@@ -2,9 +2,9 @@
 
 
 $primary: #5908db;
-$secondary: #69dc9e;
-$info: #CFEE9E;
-$gradient-right: linear-gradient(90deg, #faa6ffff, #7353baff, #2f195fff, #0f1020ff, #efc3f5ff);
+$secondary: #fc00ff;
+$info: #29d1d1;
+
 
 
 
@@ -25,4 +25,19 @@ $gradient-right: linear-gradient(90deg, #faa6ffff, #7353baff, #2f195fff, #0f1020
 .card{
   border-radius: 25pt;
 
+}
+
+.custom-gradient {
+  //background: linear-gradient(to right, #5908db13, #69dc9f4e, #5908db13); /* Cambia los colores según tus preferencias */
+  //background: radial-gradient(circle, #35d8ea, #5908db );
+  //background: radial-gradient(circle, #35d8ea, #5908db, white );
+  background: #fc00ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #00dbde, #fc00ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #00dbde, #fc00ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+h1, h2, h5, li, span, p, a {
+  font-family: 'Inter', sans-serif;
+  font-weight: lighter;
 }

@@ -1,18 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+<nav class="navbar navbar-expand-lg bg-black p-3">
   <div class="container px-5">
-      <a class="navbar-brand" href="index.html">MATCH DAY</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <a class="navbar-brand text-white" href="index.html">MATCH DAY</a>
+      <button class="navbar-toggler border-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
               <!-- TODO: If, else segons si usuari fa login --------------------->
 
-            <li class="nav-item"><a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active">Home</a></li>
-            <li class="nav-item"><a class="nav-link" (click)="openLogin()">Log In</a></li>
-            <li class="nav-item"><a class="nav-link" (click)="openRegister()">Sign Up</a></li>
-            <!-- <li class="nav-item"><p class="nav-link">May the Force be with you!</p></li> -->
-            <li class="nav-item"><a class="nav-link btn btn-outline-dark text-white" (click)="logout()" [routerLink]="['/home']" routerLinkActive="router-link-active">Log Out</a></li>
+
+            <li class="nav-item"><a class="nav-link text-white" (click)="openLogin()">Log In</a></li>
+            <li class="nav-item"><a class="nav-link text-white" (click)="openRegister()">Get Started</a></li>
+
+            <!-- TODO: mostrar cuando usario este registrado: -->
+            <!-- <li class="nav-item"><p class="nav-link text-white">Holi!!!</p></li>
+            <li class="nav-item"><a class="nav-link text-white" [routerLink]="['/home']" routerLinkActive="router-link-active">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-white" (click)="logout()" [routerLink]="['/home']" routerLinkActive="router-link-active">Log Out</a></li> -->
           </ul>
       </div>
   </div>
 </nav>
+
+
+

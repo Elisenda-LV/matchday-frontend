@@ -32,6 +32,8 @@ export class NavbarComponent {
 
   }
 
-  logout(){}
+  logout(){
+
+  }
 
 }
