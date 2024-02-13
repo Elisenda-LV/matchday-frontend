@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-black p-3">
+<nav class="navbar navbar-expand-lg bg-dark p-3">
   <div class="container px-5">
       <a class="navbar-brand text-white" href="index.html">MATCH DAY</a>
       <button class="navbar-toggler border-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -8,8 +8,9 @@
               <!-- TODO: If, else segons si usuari fa login --------------------->
 
 
-            <li class="nav-item"><a class="nav-link text-white" (click)="openLogin()">Log In</a></li>
-            <li class="nav-item"><a class="nav-link text-white" (click)="openRegister()">Get Started</a></li>
+            <li class="nav-item"><button class="nav-link text-white me-4" (click)="openLogin()">Log In</button></li>
+            <!-- <li class="nav-item"><a class="nav-link" >Get Started</a></li> -->
+            <li class="nav-item"><button class="btn btn-outline-light btn-lg px-4" (click)="openRegister()">Get Started</button></li>
 
             <!-- TODO: mostrar cuando usario este registrado: -->
             <!-- <li class="nav-item"><p class="nav-link text-white">Holi!!!</p></li>
@@ -22,11 +23,11 @@
 
 <!-- TODO: cuando se registre usuario: -->
 
-<!-- <nav class="navbar navbar-expand-lg custom-gradient p-3">
+<!-- <nav class="navbar navbar-expand-lg bg-dark p-3">
   <div class="container px-5">
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-      <li class="nav-item"><button class="btn btn-outline-dark px-5" [routerLink]="['/leagues']" routerLinkActive="router-link-active">LEAGUES</button></li>
-      <li class="nav-item"><button class="btn btn-outline-dark px-5">TEAMS</button></li>
+      <li class="nav-item"><a class="text-white px-5" [routerLink]="['/leagues']" routerLinkActive="router-link-active">LEAGUES</a></li>
+      <li class="nav-item"><a class="text-white px-5" [routerLink]="['/teams']" routerLinkActive="router-link-active">TEAMS</a></li>
     </ul>
   </div>
 </nav> -->

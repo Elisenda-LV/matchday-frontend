@@ -1,0 +1,52 @@
+<div class="container m-3">
+
+  <ul class="nav justify-content-end mb-5">
+
+      <!-- search -->
+      <li class="nav-item p-2">
+        <form  class="d-flex">
+          <input
+          type="text" class="form-control" formControlName="search" placeholder="Search">
+          <button class="btn btn-outline-white" type="submit "><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </li>
+
+    <!-- filter -->
+    <li class="nav-item p-2">
+      <button class="btn btn-outline-danger" (click)="resetFilters()" >x Delete Filters</button>
+    </li>
+
+    <!------- sport ------>
+    <li class="nav-item p-2">
+      <select #sportSelect class="form-select text-muted" >
+        <option value="">By Sport</option>
+        <option value="f7">F7</option>
+        <option value="f11">F11</option>
+        <option value="basket">Basket</option>
+      </select>
+     </li>
+
+     <!------- gender ------>
+    <li class="nav-item p-2">
+      <select #genderSelect class="form-select text-muted">
+        <option value="">By Gender</option>
+        <option value="women">Women</option>
+        <option value="men">Men</option>
+        <option value="mixed">Mixed</option>
+      </select>
+    </li>
+     <!------- category ------>
+    <li class="nav-item p-2">
+      <select #categorySelect class="form-select text-muted">
+        <option value="">By Category</option>
+        <option value="+18">+18</option>
+        <option value="+25">+25</option>
+        <option value="+30">+30</option>
+        <option value="+45">+45</option>
+      </select>
+    </li>
+    <li class="nav-item p-2">
+      <button class="btn btn-outline-dark" (click)="applyFilters()">Apply Filters</button>
+    </li>
+  </ul>
+</div>

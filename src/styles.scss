@@ -17,7 +17,7 @@ $info: #29d1d1;
   font-size: 10pt;
 }
 
-.form-control, .form-select {
+.form-control, .form-select, select, option {
   border-radius: 50pt;
   font-size: 10pt;
 }
@@ -37,7 +37,7 @@ $info: #29d1d1;
 
 }
 
-h1, h2, h5, li, span, p, a {
+h1, h2, h5, li, span, p, a, button, select, option {
   font-family: 'Inter', sans-serif;
   font-weight: lighter;
 }

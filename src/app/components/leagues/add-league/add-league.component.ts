@@ -28,7 +28,8 @@ export class AddLeagueComponent {
     name: new FormControl ('', [Validators.required, Validators.maxLength(15)]),
     sport: new FormControl ('', [Validators.required]),
     category: new FormControl ('', [Validators.required]),
-    location: new FormControl ('', [Validators.required, Validators.maxLength(15)])
+    location: new FormControl ('', [Validators.required, Validators.maxLength(15)]),
+    description: new FormGroup ('', [Validators.required, Validators.maxLength(140)]),
 
   });
 
@@ -44,6 +45,7 @@ export class AddLeagueComponent {
         sport: formValues.sport!,
         category: formValues.category!,
         location: formValues.location!,
+        description: formValues.description!,
 
       }
 

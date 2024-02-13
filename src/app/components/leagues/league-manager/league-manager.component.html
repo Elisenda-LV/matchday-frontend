@@ -1,8 +1,9 @@
 <section class="bg-light py-5">
   <div class="container px-5 my-3">
-    <h1 class="">NOM LLIGA</h1>
+    <h1 class="ps-4">NOM LLIGA</h1>
 
     <div class="row gx-5 justify-content-center p-3">
+      <div class="col">
       <div class="text-end mb-3">
         <button class="btn btn-primary me-3">Update</button>
         <button class="btn btn-primary">Delete</button>
@@ -17,20 +18,45 @@
         <p class="me-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse laboriosam vel totam possimus culpa provident iusto temporibus, voluptatum dolore impedit natus, mollitia quod eligendi facere excepturi id aliquid, ullam illum?</p>
       </div>
     </div>
+    </div>
     <div class="row gx-5 justify-content-center p-3">
-      <div class="card w-50 p-4">
+      <div class="col-12 col-sm-6">
+      <div class="card p-4">
         <div class="text-end mb-3">
           <button class="btn btn-primary">Add Team</button>
         </div>
         <h5>Teams</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Location</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <!-- <th scope="row">1</th> -->
+              <td>Panteras Cojas</td>
+              <td>Cardedeu</td>
+              <td class="text-end">
+                <button class="btn btn-primary me-2">More Info</button>
+                <button class="btn btn-primary me-2">Update</button>
+                <button class="btn btn-primary">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="card w-50 p-4">
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="card p-4">
         <div class="text-end mb-3">
           <button class="btn btn-primary">Add Match</button>
         </div>
         <h5>Calendar</h5>
       </div>
     </div>
-
+    </div>
   </div>
 </section>
