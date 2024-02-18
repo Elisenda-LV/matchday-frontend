@@ -1,19 +1,19 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { League } from '../../interfaces/league.interface';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { LeagueService } from '../../services/leagues.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AddLeagueComponent } from './add-league/add-league.component';
-import { LeagueManagerComponent } from './league-manager/league-manager.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LeagueFiltersComponent } from './league-filters/league-filters.component';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+
+
 
 
 @Component({
   selector: 'app-leagues',
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule, LeagueFiltersComponent],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
   templateUrl: './leagues.component.html',
   styleUrl: './leagues.component.scss'
 })
@@ -22,18 +22,17 @@ import { LeagueFiltersComponent } from './league-filters/league-filters.componen
 export class LeaguesComponent {
 
   public leagues: League[] = [];
-  public modalService = inject(NgbModal);
-
-  public initialFilters: { gender?: string, category?: string, sport?: string } = {};
+  public foundLeague: League[] = [];
+  public showFoundLeagueCard = false;
   public filteredLeagues: League[] = [];
-  public filtersApplied: boolean = false;
 
   constructor(
-    public leagueService: LeagueService, public config: NgbModalConfig){
-    this.leagueService.getListLeagues().subscribe((response) => {this.leagues = response})
+    public leagueService: LeagueService,
+    public modalService: NgbModal,
+    public config: NgbModalConfig
 
-    this.filteredLeagues = [...this.leagues];
-
+  ){
+    this.leagueService.getListLeagues().subscribe((response) => { this.leagues = response });
   }
 
 
@@ -42,32 +41,73 @@ export class LeaguesComponent {
 
   }
 
-  //TODO: Search League by Name
 
-  searchLeaguebyName(){}
+  //Search League by Name
+
+  searchForm = new FormGroup({
+    search : new FormControl('', [Validators.required, Validators.maxLength(20),])
+
+  })
+
+  searchLeaguebyName(){
+
+    let searchLeague = this.searchForm.get('search')!.value?.toLowerCase() || '';
+
+    if (searchLeague.trim() !== '') {
+      const foundLeague = this.leagues.find(league =>
+        league.league_name.toLowerCase().includes(searchLeague)
+
+      );
+      console.log(foundLeague)
+      if (foundLeague) {
+        this.showFoundLeagueCard = true;
+        // Do something with the found league, if needed
+      } else {
+        this.showFoundLeagueCard = false;
+        console.log('This league not exist')
+      }
+
+    } else {
+      this.showFoundLeagueCard = false;
+      // Handle case when the search term is empty
+    }
+
+  }
 
 
-  //TODO: Filters by sport, gender and category
 
-  public applyFilters(filters: { gender?: string, category?: string, sport?: string }) {
-    this.leagueService.filterLeagues(filters).subscribe(filteredLeagues => {
-      this.filteredLeagues = filteredLeagues;
-      console.log(filteredLeagues)
-      this.filtersApplied = true;
+  //Filters by sport, gender and category
+
+  filtersForm = new FormGroup({
+    gender : new FormControl(''),
+    sport : new FormControl(''),
+    category : new FormControl(''),
+
+  })
+
+  public applyFilters(){
+
+    // Get the selected values from the form
+    const genderFilter = this.filtersForm.get('gender')!.value;
+    const sportFilter = this.filtersForm.get('sport')!.value;
+    const categoryFilter = this.filtersForm.get('category')!.value;
+
+    // Apply filters to the original data
+    this.filteredLeagues = this.leagues.filter(league => {
+      return (
+        (genderFilter === '' || league.gender === genderFilter) &&
+        (sportFilter === '' || league.sport === sportFilter) &&
+        (categoryFilter === '' || league.category === categoryFilter)
+      );
     });
 
-
-  }
-
-  public resetFilters() {
-    this.initialFilters = {};
-    this.applyFilters(this.initialFilters);
-
+    console.log(this.filteredLeagues)
   }
 
 
-
-
+  public resetFilters(){
+    window.location.reload();
+  }
 
 
 }

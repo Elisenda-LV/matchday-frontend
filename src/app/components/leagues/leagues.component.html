@@ -5,60 +5,134 @@
       </div>
       <h1 class="">Show all leagues</h1>
 
-      <app-league-filters (filtersApplied)="applyFilters($event)" (filtersReset)="resetFilters()" ></app-league-filters>
 
-      <div class="row gx-5 justify-content-center">
+    <ul class="nav justify-content-end mb-5 mt-5">
 
-          <!-- Leagues cards-->
+      <!----- search form ------>
+      <li class="nav-item p-2">
+        <form [formGroup]="searchForm" class="d-flex">
+          <input type="text" class="form-control" formControlName="search" placeholder="League name...">
+          <button (click)="searchLeaguebyName()" class="btn btn-outline-dark ms-3" type="submit">Search</button>
+        </form>
+      </li>
 
-      @if(filtersApplied){
+    <!--------- filters form -------->
 
-        @for( league of filteredLeagues; track $index ){
-          <div class="col-lg-6 col-xl-4">
-            <div class="card mb-5">
-                <div class="card-body p-5">
-                    <div class="small text-uppercase fw-bold text-muted">{{ league.sport }}</div>
-                    <div class="mb-3">
-                        <span class="display-6">{{ league.league_name }}</span>
-                    </div>
-                    <ul class="list-unstyled mb-4">
-                        <li class="mb-2"><strong>{{ league.location }}</strong></li>
-                        <li class="mb-2">{{ league.category }}</li>
-                        <li class="mb-2">{{ league.gender }}</li>
-                        <li class="mb-2 text-muted">{{ league.description }}</li>
-                    </ul>
+      <!------- sports ------>
+    <form [formGroup]="filtersForm" class="d-flex">
+      <li class="nav-item p-2">
+        <select class="form-select text-muted" formControlName="sport">
+          <option value="">Sport</option>
+          <option value="f7">F7</option>
+          <option value="f11">F11</option>
+          <option value="basket">Basket</option>
+        </select>
+       </li>
 
-                    <div class="d-grid"><a class="btn btn-primary" [routerLink]="['/manager']" routerLinkActive="">League Manager</a></div>
-                </div>
-            </div>
-          </div>
-        }
+       <!------- gender ------>
+      <li class="nav-item p-2">
+        <select  class="form-select text-muted" formControlName="gender">
+          <option value="">Gender</option>
+          <option value="Women">Women</option>
+          <option value="Men">Men</option>
+          <option value="Mixed">Mixed</option>
+        </select>
+      </li>
+       <!------- category ------>
+      <li class="nav-item p-2">
+        <select class="form-select text-muted" formControlName="category">
+          <option value="">Category</option>
+          <option value="+18">+18</option>
+          <option value="+25">+25</option>
+          <option value="+30">+30</option>
+          <option value="+45">+45</option>
+        </select>
+      </li>
 
-      } @else(){
+      @if( filtersForm.touched ){
+        <li class="nav-item p-2">
+          <button class="btn btn-outline-danger" (click)="resetFilters()" >Delete</button>
+        </li>
+      }
 
-        @for( league of leagues; track $index ){
+      <li class="nav-item p-2">
+        <button class="btn btn-outline-dark" type="submit" (click)="applyFilters()">Filter</button>
+      </li>
+    </form>
+    </ul>
 
-          <div class="col-lg-6 col-xl-4">
-              <div class="card mb-5">
-                  <div class="card-body p-5">
-                      <div class="small text-uppercase fw-bold text-muted">{{ league.sport }}</div>
-                      <div class="mb-3">
-                          <span class="display-6">{{ league.league_name }}</span>
-                      </div>
-                      <ul class="list-unstyled mb-4">
-                          <li class="mb-2"><strong>{{ league.location }}</strong></li>
-                          <li class="mb-2">{{ league.category }}</li>
-                          <li class="mb-2">{{ league.gender }}</li>
-                          <li class="mb-2 text-muted">{{ league.description }}</li>
-                      </ul>
 
-                      <div class="d-grid"><a class="btn btn-primary" [routerLink]="['/manager']" routerLinkActive="">League Manager</a></div>
+  <!---------------- Leagues cards ----------------------->
+
+    <div class="row gx-5 justify-content-center">
+
+    @if( showFoundLeagueCard ){
+      @for( league of foundLeague; track $index ){
+        <div class="col-lg-6 col-xl-4">
+          <div class="card mb-5">
+              <div class="card-body p-5">
+                  <div class="small text-uppercase fw-bold text-muted">{{ league.sport }}</div>
+                  <div class="mb-3">
+                      <span class="display-6">{{ league.league_name }}</span>
                   </div>
+                  <ul class="list-unstyled mb-4">
+                      <li class="mb-2"><strong>{{ league.location }}</strong></li>
+                      <li class="mb-2">{{ league.category }}</li>
+                      <li class="mb-2">{{ league.gender }}</li>
+                      <li class="mb-2 text-muted">{{ league.description }}</li>
+                  </ul>
+
+                  <div class="d-grid"><a class="btn btn-primary" [routerLink]="['/manager']" routerLinkActive="">League Manager</a></div>
               </div>
           </div>
-        }
-
+        </div>
       }
+
+
+    }@else if (filteredLeagues.length > 0 ){
+      @for( league of filteredLeagues; track $index ){
+        <div class="col-lg-6 col-xl-4">
+          <div class="card mb-5">
+              <div class="card-body p-5">
+                  <div class="small text-uppercase fw-bold text-muted">{{ league.sport }}</div>
+                  <div class="mb-3">
+                      <span class="display-6">{{ league.league_name }}</span>
+                  </div>
+                  <ul class="list-unstyled mb-4">
+                      <li class="mb-2"><strong>{{ league.location }}</strong></li>
+                      <li class="mb-2">{{ league.category }}</li>
+                      <li class="mb-2">{{ league.gender }}</li>
+                      <li class="mb-2 text-muted">{{ league.description }}</li>
+                  </ul>
+
+                  <div class="d-grid"><a class="btn btn-primary" [routerLink]="['/manager']" routerLinkActive="">League Manager</a></div>
+              </div>
+          </div>
+        </div>
+      }
+
+    }@else {
+      @for( league of leagues; track $index ){
+        <div class="col-lg-6 col-xl-4">
+          <div class="card mb-5">
+              <div class="card-body p-5">
+                  <div class="small text-uppercase fw-bold text-muted">{{ league.sport }}</div>
+                  <div class="mb-3">
+                      <span class="display-6">{{ league.league_name }}</span>
+                  </div>
+                  <ul class="list-unstyled mb-4">
+                      <li class="mb-2"><strong>{{ league.location }}</strong></li>
+                      <li class="mb-2">{{ league.category }}</li>
+                      <li class="mb-2">{{ league.gender }}</li>
+                      <li class="mb-2 text-muted">{{ league.description }}</li>
+                  </ul>
+
+                  <div class="d-grid"><a class="btn btn-primary" [routerLink]="['/manager']" routerLinkActive="">League Manager</a></div>
+              </div>
+          </div>
+        </div>
+      }
+    }
 
     </div>
   </div>
