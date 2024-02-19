@@ -1,6 +1,6 @@
 <section class="bg-light py-5">
   <div class="container px-5 my-3">
-    <h1 class="ps-4">NOM LLIGA</h1>
+    <h1 class="ps-4">{{ leagueCard.league_name.toUpperCase()  }}</h1>
 
     <div class="row gx-5 justify-content-center p-3">
       <div class="col">
@@ -10,12 +10,12 @@
       </div>
       <div class="card w-100 p-4">
         <ul class="d-flex list-unstyled mb-4">
-          <li class="me-4">Sport: <strong>F7</strong></li>
-          <li class="me-4">Category: <strong>+30</strong></li>
-          <li class="me-4">Gender: <strong>Mixed</strong></li>
-          <li class="me-4">Location: <strong>Barcelona</strong></li>
+          <li class="me-4">Sport: <strong>{{ leagueCard.sport }}</strong></li>
+          <li class="me-4">Category: <strong>{{ leagueCard.category }}</strong></li>
+          <li class="me-4">Gender: <strong>{{ leagueCard.gender }}</strong></li>
+          <li class="me-4">Location: <strong>{{ leagueCard.location }}</strong></li>
         </ul>
-        <p class="me-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse laboriosam vel totam possimus culpa provident iusto temporibus, voluptatum dolore impedit natus, mollitia quod eligendi facere excepturi id aliquid, ullam illum?</p>
+        <p class="me-4 text-muted">{{ leagueCard.description }}</p>
       </div>
     </div>
     </div>

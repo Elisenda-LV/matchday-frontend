@@ -19,24 +19,35 @@
             <span class="text-muted">Sport:</span>
             <select class="form-select"  name="sport" id="sportSelect" formControlName="sport" required
             [ngClass]="{'is-invalid': leagueForm.get('sport')?.invalid && leagueForm.get('sport')?.touched}">
-              <option value="F7">F5</option>
-              <option value="F11">F7</option>
-              <option value="F5">F11</option>
-              <option value="Basket">Basket</option>
-              <option value="Padel">Padel</option>
+              <option value="F5">F5</option>
+              <option value="F7">F7</option>
+              <option value="F11">F11</option>
+              <option value="Basketball">Basket</option>
             </select>
           </div>
 
-          <!---------- category ------------>
+          <!---------- gender ------------>
           <div class="p-2">
-            <span class="text-muted">Category:</span>
-            <select class="form-select" name="" id="CategorySelect" formControlName="category" required
-            [ngClass]="{'is-invalid': leagueForm.get('category')?.invalid && leagueForm.get('category')?.touched}">
-            <option value="Women">Women</option>
-            <option value="Men">Men</option>
-            <option value="Mixed">Mixed</option>
+            <span class="text-muted">Gender:</span>
+            <select class="form-select" name="" id="GenderSelect" formControlName="gender" required
+              [ngClass]="{'is-invalid': leagueForm.get('gender')?.invalid && leagueForm.get('gender')?.touched}">
+              <option value="Women">Women</option>
+              <option value="Men">Men</option>
+              <option value="Mixed">Mixed</option>
             </select>
           </div>
+
+            <!---------- category ------------>
+            <div class="p-2">
+              <span class="text-muted">Category:</span>
+              <select class="form-select" name="" id="CategorySelect" formControlName="category" required
+                [ngClass]="{'is-invalid': leagueForm.get('category')?.invalid && leagueForm.get('category')?.touched}">
+                <option value="+18">+18</option>
+                <option value="+25">+25</option>
+                <option value="+30">+30</option>
+                <option value="+45">+45</option>
+              </select>
+            </div>
 
           <!---------- location ---------------->
           <div class="p-2">

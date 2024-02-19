@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { League } from '../../interfaces/league.interface';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { LeagueService } from '../../services/leagues.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AddLeagueComponent } from './add-league/add-league.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -28,17 +28,48 @@ export class LeaguesComponent {
 
   constructor(
     public leagueService: LeagueService,
+    public router: Router,
     public modalService: NgbModal,
     public config: NgbModalConfig
 
   ){
-    this.leagueService.getListLeagues().subscribe((response) => { this.leagues = response });
+    /* this.leagueService.getListLeagues()
+      .subscribe((response) => {
+        this.leagues = response
+        console.log(response)
+      }); */
+
+      this.leagueService.getListLeagues()
+        .subscribe({
+          next: ((data: League[]) => {
+            this.leagues = data,
+            this.leagues.forEach(league => {
+              league.id_league = league.id_league;
+              console.log(league)
+              console.log(data)
+            })
+
+          })
+      });
+
   }
 
+  // To open modal, only admin users:
 
   addLeagueModal(){
     this.modalService.open(AddLeagueComponent)
 
+  }
+
+
+  // To show league-manager:
+
+  public viewLeague(id: number) {
+    if(id){
+      this.router.navigate(['/leagues', id]);
+    }else{
+      console.error('Id undefined o null');
+    }
   }
 
 

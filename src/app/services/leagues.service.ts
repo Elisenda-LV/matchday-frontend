@@ -21,7 +21,7 @@ export class LeagueService {
   }
 
   getLeagueById(id: number): Observable<any>{
-    return this.httpClient.get<League[]>(`${API_URL}leagues/${id}`);
+    return this.httpClient.get<League>(`${API_URL}leagues/${id}`);
   }
 
   deleteLeague(id: number): Observable<any>{

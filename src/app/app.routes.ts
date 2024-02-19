@@ -20,7 +20,7 @@ export const routes: Routes = [
 
   },
   {
-    path: 'manager',
+    path: 'leagues/:id',
     title: 'League Manager',
     loadComponent: () => import('./components/leagues/league-manager/league-manager.component').then(c => c.LeagueManagerComponent),
 

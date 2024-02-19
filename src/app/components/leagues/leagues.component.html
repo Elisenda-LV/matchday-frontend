@@ -82,7 +82,7 @@
                       <li class="mb-2 text-muted">{{ league.description }}</li>
                   </ul>
 
-                  <div class="d-grid"><a class="btn btn-primary" [routerLink]="['/manager']" routerLinkActive="">League Manager</a></div>
+                  <div class="d-grid"><a class="btn btn-primary" (click)="viewLeague(league.id_league)">League Manager</a></div>
               </div>
           </div>
         </div>
@@ -105,7 +105,7 @@
                       <li class="mb-2 text-muted">{{ league.description }}</li>
                   </ul>
 
-                  <div class="d-grid"><a class="btn btn-primary" [routerLink]="['/manager']" routerLinkActive="">League Manager</a></div>
+                  <div class="d-grid"><a class="btn btn-primary"  (click)="viewLeague(league.id_league)">League Manager</a></div>
               </div>
           </div>
         </div>
@@ -127,7 +127,7 @@
                       <li class="mb-2 text-muted">{{ league.description }}</li>
                   </ul>
 
-                  <div class="d-grid"><a class="btn btn-primary" [routerLink]="['/manager']" routerLinkActive="">League Manager</a></div>
+                  <div class="d-grid"><a class="btn btn-primary"  (click)="viewLeague(league.id_league)">League Manager</a></div>
               </div>
           </div>
         </div>
