@@ -1,18 +1,17 @@
-<section class="bg-light py-5">
+<section class="bg-black py-5">
+
   <div class="container px-5 my-3">
-      <div class="text-end mb-3">
-        <button class="btn btn-primary" (click)="addLeagueModal()">Add League</button>
-      </div>
-      <h1 class="">Show all leagues</h1>
+    <div class="row bg-dark p-5">
+      <h1 class="text-light py-3">All <strong>Leagues</strong></h1>
+    </div>
 
-
-    <ul class="nav justify-content-end mb-5 mt-5">
+    <ul class="nav justify-content-between mb-5 mt-5 pt-4">
 
       <!----- search form ------>
       <li class="nav-item p-2">
         <form [formGroup]="searchForm" class="d-flex">
           <input type="text" class="form-control" formControlName="search" placeholder="League name...">
-          <button (click)="searchLeaguebyName()" class="btn btn-outline-dark ms-3" type="submit">Search</button>
+          <button (click)="searchLeaguebyName()" class="btn btn-outline-light ms-3" type="submit">Search</button>
         </form>
       </li>
 
@@ -21,7 +20,7 @@
       <!------- sports ------>
     <form [formGroup]="filtersForm" class="d-flex">
       <li class="nav-item p-2">
-        <select class="form-select text-muted" formControlName="sport">
+        <select class="form-select text-light" formControlName="sport">
           <option value="">Sport</option>
           <option value="f7">F7</option>
           <option value="f11">F11</option>
@@ -31,7 +30,7 @@
 
        <!------- gender ------>
       <li class="nav-item p-2">
-        <select  class="form-select text-muted" formControlName="gender">
+        <select  class="form-select text-light" formControlName="gender">
           <option value="">Gender</option>
           <option value="Women">Women</option>
           <option value="Men">Men</option>
@@ -40,7 +39,7 @@
       </li>
        <!------- category ------>
       <li class="nav-item p-2">
-        <select class="form-select text-muted" formControlName="category">
+        <select class="form-select text-light" formControlName="category">
           <option value="">Category</option>
           <option value="+18">+18</option>
           <option value="+25">+25</option>
@@ -56,7 +55,12 @@
       }
 
       <li class="nav-item p-2">
-        <button class="btn btn-outline-dark" type="submit" (click)="applyFilters()">Filter</button>
+        <button class="btn btn-outline-light" type="submit" (click)="applyFilters()">Filter</button>
+      </li>
+
+<!---------------------- add league buttoon, only for admin users --------------------------------->
+      <li class="nav-item p-2">
+        <button class="btn btn-primary px-4" (click)="addLeagueModal()">Add League</button>
       </li>
     </form>
     </ul>
@@ -82,7 +86,8 @@
                       <li class="mb-2 text-muted">{{ league.description }}</li>
                   </ul>
 
-                  <div class="d-grid"><a class="btn btn-primary" (click)="viewLeague(league.id_league)">League Manager</a></div>
+                  <div class="d-grid"><a class="btn btn-primary mb-2"  (click)="viewLeague(league.id_league)">League Manager</a></div>
+                  <div class="d-grid"><a class="btn btn-primary"  (click)="viewLeague(league.id_league)">Show More</a></div>
               </div>
           </div>
         </div>
@@ -105,7 +110,8 @@
                       <li class="mb-2 text-muted">{{ league.description }}</li>
                   </ul>
 
-                  <div class="d-grid"><a class="btn btn-primary"  (click)="viewLeague(league.id_league)">League Manager</a></div>
+                  <div class="d-grid"><a class="btn btn-primary mb-2"  (click)="viewLeague(league.id_league)">League Manager</a></div>
+                  <div class="d-grid"><a class="btn btn-primary"  (click)="viewLeague(league.id_league)">Show More</a></div>
               </div>
           </div>
         </div>
@@ -114,20 +120,20 @@
     }@else {
       @for( league of leagues; track $index ){
         <div class="col-lg-6 col-xl-4">
-          <div class="card mb-5">
+          <div class="card bg-dark mb-5">
               <div class="card-body p-5">
-                  <div class="small text-uppercase fw-bold text-muted">{{ league.sport }}</div>
+                  <div class="small text-uppercase fw-bold text-light">{{ league.sport }}</div>
                   <div class="mb-3">
-                      <span class="display-6">{{ league.league_name }}</span>
+                      <span class="display-6 text-white"><strong>{{ league.league_name }}</strong></span>
                   </div>
                   <ul class="list-unstyled mb-4">
-                      <li class="mb-2"><strong>{{ league.location }}</strong></li>
-                      <li class="mb-2">{{ league.category }}</li>
-                      <li class="mb-2">{{ league.gender }}</li>
-                      <li class="mb-2 text-muted">{{ league.description }}</li>
+                      <li class="mb-2 text-white"><strong>{{ league.location }}</strong></li>
+                      <li class="mb-2 text-light">{{ league.category }}</li>
+                      <li class="mb-2 text-light">{{ league.gender }}</li>
+                      <li class="mb-2 text-light"><p>{{ league.description }}</p></li>
                   </ul>
-
-                  <div class="d-grid"><a class="btn btn-primary"  (click)="viewLeague(league.id_league)">League Manager</a></div>
+                  <div class="d-grid"><a class="btn btn-primary mb-2"  (click)="viewLeague(league.id_league)">League Manager</a></div>
+                  <div class="d-grid"><a class="btn btn-primary"  (click)="viewLeague(league.id_league)">Show More</a></div>
               </div>
           </div>
         </div>

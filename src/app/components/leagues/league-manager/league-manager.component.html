@@ -1,62 +1,92 @@
 <section class="bg-light py-5">
+
   <div class="container px-5 my-3">
-    <h1 class="ps-4">{{ leagueCard.league_name.toUpperCase()  }}</h1>
+
+    <div class="row p-5 border">
+      <h1 class="ps-4"><strong>{{ leagueCard.league_name.toUpperCase() }}</strong></h1>
+    </div>
+
+    <div class="row gx-5 justify-content-center mt-5 p-3">
+      <div class="col">
+        <div class="text-end">
+          <button class="btn btn-outline-primary me-3" (click)="editLeagueModal(leagueCard)">Edit</button>
+          <button class="btn btn-outline-danger">Delete</button>
+        </div>
+      </div>
+    </div>
 
     <div class="row gx-5 justify-content-center p-3">
-      <div class="col">
-      <div class="text-end mb-3">
-        <button class="btn btn-primary me-3">Update</button>
-        <button class="btn btn-primary">Delete</button>
-      </div>
-      <div class="card w-100 p-4">
-        <ul class="d-flex list-unstyled mb-4">
-          <li class="me-4">Sport: <strong>{{ leagueCard.sport }}</strong></li>
-          <li class="me-4">Category: <strong>{{ leagueCard.category }}</strong></li>
-          <li class="me-4">Gender: <strong>{{ leagueCard.gender }}</strong></li>
-          <li class="me-4">Location: <strong>{{ leagueCard.location }}</strong></li>
-        </ul>
-        <p class="me-4 text-muted">{{ leagueCard.description }}</p>
-      </div>
-    </div>
-    </div>
-    <div class="row gx-5 justify-content-center p-3">
+      <!------- League card description ---------->
       <div class="col-12 col-sm-6">
-      <div class="card p-4">
-        <div class="text-end mb-3">
-          <button class="btn btn-primary">Add Team</button>
+        <div class="card p-4 mb-5">
+          <div class="text-end">
+            <button class="btn btn-primary">Edit</button>
+          </div>
+          <h3 class="">About</h3>
+          <p class="text-muted me-4  mt-4">{{ leagueCard.description }}</p>
+          <ul class="list-unstyled mb-4">
+            <li class="me-4">Sport: <strong>{{ leagueCard.sport }}</strong></li>
+            <li class="me-4">Category: <strong>{{ leagueCard.category }}</strong></li>
+            <li class="me-4">Gender: <strong>{{ leagueCard.gender }}</strong></li>
+            <li class="me-4">Location: <strong>{{ leagueCard.location }}</strong></li>
+          </ul>
         </div>
-        <h5>Teams</h5>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Location</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <!-- <th scope="row">1</th> -->
-              <td>Panteras Cojas</td>
-              <td>Cardedeu</td>
-              <td class="text-end">
-                <button class="btn btn-primary me-2">More Info</button>
-                <button class="btn btn-primary me-2">Update</button>
-                <button class="btn btn-primary">Delete</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      </div>
+
+      <!------- Results and Calendar ---------->
+      <div class="col-12 col-sm-6 mb-3">
+        <div class="card p-4">
+          <div class="text-end">
+            <button class="btn btn-primary">Add Match</button>
+          </div>
+          <h3>Calendar</h3>
+        </div>
       </div>
     </div>
-    <div class="col-12 col-sm-6">
-      <div class="card p-4">
-        <div class="text-end mb-3">
-          <button class="btn btn-primary">Add Match</button>
+
+    <div class="row gx-5 justify-content-center p-3">
+      <!------- League Standing ---------->
+      <div class="col-12 col-sm-6 mb-5">
+        <div class="card p-4">
+          <div class="text-end mb-3">
+            <button class="btn btn-primary">...</button>
+          </div>
+          <h3>League Standing</h3>
         </div>
-        <h5>Calendar</h5>
+      </div>
+
+      <!------- Teams ---------->
+      <div class="col-12 col-sm-6">
+        <div class="card p-4">
+          <div class="text-end mb-3">
+            <button class="btn btn-primary">Add Team</button>
+          </div>
+          <h3>Teams</h3>
+          <table class="table mt-4">
+            <thead>
+              <tr>
+                <th class="fw-light" scope="col">Name</th>
+                <th class="fw-light" scope="col">Location</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!-- <th scope="row">1</th> -->
+                <!-- <td>Panteras Cojas</td>
+                <td>Cardedeu</td>
+                <td class="text-end">
+                  <button class="btn btn-primary me-2">More Info</button>
+                  <button class="btn btn-primary me-2">Update</button>
+                  <button class="btn btn-primary">Delete</button>
+                </td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-    </div>
+
   </div>
+
 </section>

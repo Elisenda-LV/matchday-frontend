@@ -33,12 +33,6 @@ export class LeaguesComponent {
     public config: NgbModalConfig
 
   ){
-    /* this.leagueService.getListLeagues()
-      .subscribe((response) => {
-        this.leagues = response
-        console.log(response)
-      }); */
-
       this.leagueService.getListLeagues()
         .subscribe({
           next: ((data: League[]) => {
@@ -46,7 +40,7 @@ export class LeaguesComponent {
             this.leagues.forEach(league => {
               league.id_league = league.id_league;
               console.log(league)
-              console.log(data)
+
             })
 
           })

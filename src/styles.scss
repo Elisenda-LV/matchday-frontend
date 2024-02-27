@@ -3,7 +3,7 @@
 
 $primary: #5908db;
 $secondary: #fc00ff;
-$info: #29d1d1;
+$info: aquamarine;
 
 
 
@@ -20,7 +20,11 @@ $info: #29d1d1;
 .form-control, .form-select, select, option {
   border-radius: 50pt;
   font-size: 10pt;
+  background-color: black;
+
 }
+
+
 
 .card{
   border-radius: 25pt;
@@ -40,4 +44,12 @@ $info: #29d1d1;
 h1, h2, h5, li, span, p, a, button, select, option {
   font-family: 'Inter', sans-serif;
   font-weight: lighter;
+}
+
+.header-gradient{
+  background: #fc00ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,  #fc00ff, #00dbde,);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right,  #fc00ff, #00dbde,); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
 }

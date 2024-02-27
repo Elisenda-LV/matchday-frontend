@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { LeagueService } from '../../../services/leagues.service';
 import { League } from '../../../interfaces/league.interface';
+import { NgbModal, NgbModalConfig, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { EditLeagueComponent } from './edit-league/edit-league.component';
+import { DeleteLeagueComponent } from './delete-league/delete-league.component';
 
 @Component({
   selector: 'app-league-manager',
@@ -10,8 +13,6 @@ import { League } from '../../../interfaces/league.interface';
   imports: [
     CommonModule,
     RouterModule,
-
-
   ],
   templateUrl: './league-manager.component.html',
   styleUrl: './league-manager.component.scss'
@@ -20,8 +21,8 @@ import { League } from '../../../interfaces/league.interface';
 
 export class LeagueManagerComponent implements OnInit {
 
+  public league: League[] = [];
   public leagueId: string = '';
-  //public leagueCard: League[] = [];
   public leagueCard : League = {
     id_league: 0,
     sport_id: 0,
@@ -34,7 +35,14 @@ export class LeagueManagerComponent implements OnInit {
     create_at: new Date(),
   }
 
-  constructor( public leagueService: LeagueService, public route: ActivatedRoute ){}
+  constructor(
+    public leagueService: LeagueService,
+    public route: ActivatedRoute,
+    public modalService: NgbModal,
+    public config: NgbModalConfig,
+
+
+  ){}
 
   public ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -45,6 +53,8 @@ export class LeagueManagerComponent implements OnInit {
     this.showCard(Number(this.leagueId));
 
   }
+
+  //Get league by id:
 
   public showCard(id: any){
     this.leagueService.getLeagueById(id)
@@ -59,8 +69,20 @@ export class LeagueManagerComponent implements OnInit {
 
       })
 
+  }
+
+  // To open update and delete league modal, only admin users:
+
+  public editLeagueModal(leagueCard: League){
+    const modalRef = this.modalService.open(EditLeagueComponent)
+    modalRef.componentInstance.leagueCard = leagueCard;
 
   }
+
+  /* public deleteLeagueModal(leagueId: number){
+    const modalRef = this.modalService.open(DeleteLeagueComponent)
+    modalRef.componentInstance.leagueCard = leagueId;
+  } */
 
 
 }

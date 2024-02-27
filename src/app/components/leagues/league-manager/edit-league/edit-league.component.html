@@ -1,22 +1,22 @@
 <div class="row">
   <div class="col">
     <div class="card border-white p-5">
-      <h5 class="card-title">Create a new League</h5>
+      <h5 class="card-title">Edit</h5>
 
       <!-- ------ -  FORMLEAGUE  - ------- -->
 
-      <form [formGroup]="leagueForm" (submit)="createLeague()">
+      <form [formGroup]="editLeagueForm" (submit)="editLeague()">
 
         <!---------- name ------------>
         <div class="mt-4 p-2">
           <input class="form-control" name="league_name" type="name" formControlName="league_name" placeholder="Enter a league name" required
-            [ngClass]="{'is-invalid': leagueForm.get('name')?.invalid && leagueForm.get('name')?.touched}">
+            [ngClass]="{'is-invalid': editLeagueForm.get('name')?.invalid && editLeagueForm.get('name')?.touched}">
         </div>
 
         <!--------- sport ------------->
         <div class="p-2">
-          <select class="form-select"  name="sport" id="sportSelect" formControlName="sport_id" required
-            [ngClass]="{'is-invalid': leagueForm.get('sport')?.invalid && leagueForm.get('sport')?.touched}">
+          <select class="form-select"  name="sport_id" id="sportSelect" formControlName="sport_id" required
+            [ngClass]="{'is-invalid': editLeagueForm.get('sport')?.invalid && editLeagueForm.get('sport')?.touched}">
               <option value="">Sport</option>
               <option value="2">F5</option>
               <option value="1">F7</option>
@@ -28,7 +28,7 @@
         <!---------- gender ------------>
         <div class="p-2">
           <select class="form-select" name="gender" id="genderSelect" formControlName="gender" required
-            [ngClass]="{'is-invalid': leagueForm.get('gender')?.invalid && leagueForm.get('gender')?.touched}">
+            [ngClass]="{'is-invalid': editLeagueForm.get('gender')?.invalid && editLeagueForm.get('gender')?.touched}">
               <option value="">Gender</option>
               <option value="Women">Women</option>
               <option value="Men">Men</option>
@@ -39,7 +39,7 @@
         <!---------- category ------------>
         <div class="p-2">
           <select class="form-select" name="category" id="categorySelect" formControlName="category" required
-            [ngClass]="{'is-invalid': leagueForm.get('category')?.invalid && leagueForm.get('category')?.touched}">
+            [ngClass]="{'is-invalid': editLeagueForm.get('category')?.invalid && editLeagueForm.get('category')?.touched}">
                 <option value="">Category</option>
                 <option value="+18">+18</option>
                 <option value="+25">+25</option>
@@ -51,18 +51,18 @@
         <!---------- location ---------------->
         <div class="p-2">
           <input class="form-control" name="location" type="name" class="form-control" formControlName="location" placeholder="Enter a location" required
-            [ngClass]="{'is-invalid': leagueForm.get('location')?.invalid && leagueForm.get('location')?.touched}">
+            [ngClass]="{'is-invalid': editLeagueForm.get('location')?.invalid && editLeagueForm.get('location')?.touched}">
         </div>
 
         <!---------- description ---------------->
         <div class="p-2">
             <input class="form-control"  name="description" type="name" class="form-control" formControlName="description" placeholder="Enter a short desciption about your league" required
-              [ngClass]="{'is-invalid': leagueForm.get('description')?.invalid && leagueForm.get('description')?.touched}">
+              [ngClass]="{'is-invalid': editLeagueForm.get('description')?.invalid && editLeagueForm.get('description')?.touched}">
         </div>
 
         <!----------- buttons ---------------->
         <div class="modal-footer border-white mt-4">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeLeague()">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeEditLeague()">Close</button>
           <button type="submit" class="btn btn-primary">Save</button>
         </div>
 

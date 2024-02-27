@@ -22,27 +22,27 @@ export class AddLeagueComponent {
 
   @Input() league: League[] = [];
 
-  //TODO: ampliar form amb dades extra:
-
   leagueForm = new FormGroup({
-    name: new FormControl ('', [Validators.required, Validators.maxLength(15)]),
-    sport: new FormControl ('', [Validators.required]),
+    league_name: new FormControl ('', [Validators.required, Validators.maxLength(15)]),
+    sport_id: new FormControl ('', [Validators.required]),
+    gender: new FormControl ('', [Validators.required]),
     category: new FormControl ('', [Validators.required]),
     location: new FormControl ('', [Validators.required, Validators.maxLength(15)]),
-    description: new FormGroup ('', [Validators.required, Validators.maxLength(140)]),
+    description: new FormControl ('', [Validators.required, Validators.maxLength(140)]),
 
   });
 
   constructor(public leagueService: LeagueService){}
 
 
-  createLeague(){
-    if(this.leagueForm.valid){
+  public createLeague(){
 
+    if(this.leagueForm.valid){
       const formValues = this.leagueForm.value;
       const newLeague: any = {
-        name: formValues.name!,
-        sport: formValues.sport!,
+        league_name: formValues.league_name!,
+        sport_id: formValues.sport_id!,
+        gender: formValues.gender!,
         category: formValues.category!,
         location: formValues.location!,
         description: formValues.description!,
@@ -53,6 +53,7 @@ export class AddLeagueComponent {
         {
           next: (createdLeague: any) => {
             this.activeModal.close(createdLeague);
+            console.log(createdLeague)
 
           },
           error: (err) => console.log(err)
@@ -61,7 +62,7 @@ export class AddLeagueComponent {
     }
   }
 
-  closeLeague(){
+  public closeLeague(){
     this.activeModal.close(this.createLeague)
   }
 

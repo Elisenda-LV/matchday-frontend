@@ -1,1 +1,18 @@
+p{
+  font-size: 10pt;
 
+}
+
+::placeholder {
+  color:rgb(172, 155, 155);
+}
+input{
+  border-color: rgb(172, 155, 155);
+  color: rgb(172, 155, 155);
+  width: 275pt;
+}
+
+.form-select{
+  border-color: rgb(172, 155, 155);
+  color: rgb(172, 155, 155);
+}
