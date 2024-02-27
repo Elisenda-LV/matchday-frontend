@@ -1,4 +1,6 @@
-# MatchdayFrontend
+# Matchday Frontend
+
+This Angular application, powered by Bootstrap 5, provides a comprehensive solution for managing leagues and tournaments. Whether you're organizing sports events, gaming competitions, or any other type of tournament, this app simplifies the entire process.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
 
